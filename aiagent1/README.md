@@ -169,9 +169,12 @@ uv run python main.py
 - **錯誤處理**：完善的異常處理機制，包含 Tripwire 熔斷保護
 - **串流輸出**：支援即時串流回應，提升使用者體驗
 
-## 延伸學習
+## 參考資源
 
 - [OpenAI Agents SDK 文件](https://github.com/openai/openai-agents-sdk)
 - [Model Context Protocol (MCP)](https://modelcontextprotocol.io/)
 - [OpenAI API 參考文件](https://platform.openai.com/docs/)
+
+## 參考書籍
+- **AI Agent 奇幻旅程** - MCP 通往異世界金鑰
 

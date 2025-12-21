@@ -204,3 +204,6 @@ OpenAI 會呼叫 MCP Tool 並根據回傳結果產生回應：
 - [ngrok 文件](https://ngrok.com/docs)
 - [OpenAI Platform 文件](https://platform.openai.com/docs)
 
+## 參考書籍
+- **AI Agent 奇幻旅程** - MCP 通往異世界金鑰
+
