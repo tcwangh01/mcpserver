@@ -16,9 +16,27 @@
 - OpenAI API Key
 - Google Gemini API Key
 
-## 安裝步驟
+## 專案建立步驟
 
-### 1. 安裝相關套件
+### 1. 建立 .NET C# Console 應用程式
+
+開始開發前要先完成 .NET C#  的開發環境環境．建立方式可參考這篇 [https://github.com/tcwangh01/mcpserver/tree/master/hello-semantic-kernel-app](在 MacBook 上建立 .NET/C# 開發環境)． 
+C# 開發環境建立後，開啟終端機，導航至您想要建立專案的目錄：
+
+```bash
+# 建立新的控制台應用程式
+dotnet new console -n hello-semantic-kernel-app
+
+# 進入專案目錄
+cd ello-semantic-kernel-app
+```
+
+這會建立一個包含以下檔案的專案：
+- `Program.cs` - 主程式檔案
+- `ello-semantic-kernel-app.csproj` - 專案設定檔
+- `obj/` - 編譯暫存目錄
+
+### 2. 安裝相關套件
 
 ```bash
 # 安裝 Semantic Kernel 核心套件
@@ -28,7 +46,7 @@ dotnet add package Microsoft.SemanticKernel
 dotnet add package Microsoft.SemanticKernel.Connectors.Google --prerelease
 ```
 
-### 2. 設定環境變數
+### 3. 設定環境變數
 
 在 `~/.zshrc` (Mac/Linux) 或系統環境變數中加入：
 
@@ -43,7 +61,7 @@ export GEMINI_API_KEY="your-gemini-api-key-here"
 source ~/.zshrc
 ```
 
-### 3. 驗證環境變數
+### 4. 驗證環境變數
 
 ```bash
 echo $OPENAI_API_KEY
@@ -141,7 +159,6 @@ echo $OPENAI_API_KEY
 dotnet list package
 dotnet add package Microsoft.SemanticKernel --prerelease
 ```
-
 ## 參考資源
 
 - [Semantic Kernel 官方文檔](https://learn.microsoft.com/en-us/semantic-kernel/)
@@ -149,6 +166,3 @@ dotnet add package Microsoft.SemanticKernel --prerelease
 - [Google Gemini API 文檔](https://ai.google.dev/gemini-api/docs)
 - [Semantic Kernel GitHub](https://github.com/microsoft/semantic-kernel)
 
-## 授權
-
-本專案僅供學習和示範用途。
