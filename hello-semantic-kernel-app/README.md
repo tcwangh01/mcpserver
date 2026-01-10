@@ -20,7 +20,7 @@
 
 ### 1. 建立 .NET C# Console 應用程式
 
-開始開發前要先完成 .NET C#  的開發環境環境．建立方式可參考這篇 [https://github.com/tcwangh01/mcpserver/tree/master/hello-semantic-kernel-app](在 MacBook 上建立 .NET/C# 開發環境)． 
+開始開發前要先完成 .NET C#  的開發環境環境．建立方式可參考這篇 [https://github.com/tcwangh01/ai-learning-notes/blob/main/llm/semantic-kernel/sk-dotnet-mac-setup.md](在 MacBook 上建立 .NET/C# 開發環境)． 
 C# 開發環境建立後，開啟終端機，導航至您想要建立專案的目錄：
 
 ```bash
