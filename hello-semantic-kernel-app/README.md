@@ -103,14 +103,60 @@ hello-semantic-kernel-app/
 
 這個範例程式會依序執行以下操作：
 
-1. **OpenAI 查詢**：向 GPT-4 詢問「什麼是 Semantic Kernel？」
-2. **Gemini 查詢**：向 Gemini 2.0 Flash 詢問「你認識台灣嗎」
+1. **使用 GetChatMessageContentAsync**：向 GPT-4 詢問「什麼是 Semantic Kernel？」
+2. **使用 InvokePromptAsync**：向 GPT-4 詢問「義大利推薦美食？」
+3. **使用 Gemini**：向 Gemini 2.0 Flash 詢問「你認識台灣嗎」
+
+### Semantic Kernel 的兩種對話方式
+
+本專案展示了 Semantic Kernel 中兩種不同的 AI 對話 API：
+
+#### 1. GetChatMessageContentAsync（低層級 API）
+
+```csharp
+var chatCompletionService = kernel.GetRequiredService<IChatCompletionService>();
+var response = await chatCompletionService.GetChatMessageContentAsync(
+    "什麼是 Semantic Kernel？"
+);
+```
+
+**特點**：
+- 直接與聊天完成服務互動
+- 適合簡單的單次對話
+- 需要手動管理對話歷史
+- 不支援提示模板或變數替換
+
+#### 2. InvokePromptAsync（高層級 API）
+
+```csharp
+var promptResult = await kernel.InvokePromptAsync("義大利推薦美食?");
+```
+
+**特點**：
+- 透過 Kernel 執行，提供更豐富的功能
+- 支援**提示模板**和**變數替換**
+- 支援**函數調用 (Function Calling)**
+- 可以整合 Plugins 和其他 Kernel 功能
+- 更適合複雜的 AI 工作流
+
+#### 使用時機建議
+
+| 情境 | 建議方法 |
+|------|---------|
+| 簡單問答對話 | `GetChatMessageContentAsync` |
+| 需要動態提示變數 | `InvokePromptAsync` |
+| 需要函數調用 | `InvokePromptAsync` |
+| 複雜工作流程 | `InvokePromptAsync` |
+| 整合外掛功能 | `InvokePromptAsync` |
 
 ### 輸出範例
 
 ```
 === OpenAI 回應 ===
 Semantic Kernel 是一個...
+
+=== 使用 InvokePromptAsync ===
+義大利美食推薦：披薩、義大利麵...
 
 === Gemini 回應 ===
 是的，我認識台灣...

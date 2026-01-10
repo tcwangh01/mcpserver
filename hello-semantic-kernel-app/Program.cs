@@ -33,6 +33,11 @@ var response = await chatCompletionService.GetChatMessageContentAsync(
 Console.WriteLine("=== OpenAI 回應 ===");
 Console.WriteLine(response.Content);
 
+// 使用 InvokePromptAsync 的範例
+Console.WriteLine("\n=== 使用 InvokePromptAsync ===");
+var promptResult = await kernel.InvokePromptAsync("義大利推薦美食?");
+Console.WriteLine(promptResult);
+
 // ========== 使用 Gemini ==========
 Console.WriteLine("\n=== Gemini 回應 ===");
 
