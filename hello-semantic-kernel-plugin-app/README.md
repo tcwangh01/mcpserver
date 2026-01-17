@@ -261,6 +261,12 @@ public async Task<string> GetWeather(string city)
 }
 ```
 
+### 建立 AI 短期記憶能力
+
+![alt text](./images/AI-short-history.png)
+
+目前範例可以做到一問一答，如果要讓連續對話可以順利進行，就必須導入一個短期記憶的機制，來記住使用者剛才對話過的城市．如上圖中的第二句詢問．
+
 ## 注意事項
 
 1. **API Key 安全**：絕對不要將 API Keys 硬編碼在程式碼中或提交到版本控制系統
