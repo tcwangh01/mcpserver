@@ -93,27 +93,20 @@ chatHistory.AddMessage(response.Role, response.Content);
 
 ## 專案建立步驟
 
-### 1. 建立專案目錄
-
-```bash
-mkdir hello-semantic-kernel-plugin-history-app
-cd hello-semantic-kernel-plugin-history-app
-```
-
-### 2. 建立專案
+### 1. 建立專案
 
 ```bash
 dotnet new console -n hello-semantic-kernel-plugin-history-app
 ```
 
-### 3. 安裝 NuGet 套件
+### 2. 安裝 NuGet 套件
 
 ```bash
 dotnet add package Microsoft.SemanticKernel --version 1.68.0
 dotnet add package Microsoft.SemanticKernel.Connectors.OpenAI --version 1.68.0
 ```
 
-### 4. 設定環境變數
+### 3. 設定環境變數
 
 **macOS/Linux：**
 ```bash
