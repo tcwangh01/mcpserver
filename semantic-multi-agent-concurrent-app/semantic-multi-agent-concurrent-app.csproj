@@ -1,0 +1,57 @@
+<!--
+  ============================================================================
+  Semantic Kernel Multi-Agent Concurrent Orchestration — 專案設定檔
+  ============================================================================
+  本專案展示 Semantic Kernel 的 ConcurrentOrchestration（並行協作）模式，
+  讓多個 AI Agent 同時審查同一份合約，各自從法務、財務、資安角度提出意見。
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- 輸出類型為可執行檔（Console Application） -->
+    <OutputType>Exe</OutputType>
+    <!-- 目標框架為 .NET 10.0 -->
+    <TargetFramework>net10.0</TargetFramework>
+    <!-- 專案根命名空間（自動依專案名稱產生，連字號轉底線） -->
+    <RootNamespace>semantic_multi_agent_concurrent_app</RootNamespace>
+    <!-- 啟用全域 using（自動引入常用命名空間如 System、System.Linq 等） -->
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- 啟用 Nullable 參考型別，協助在編譯階段偵測空值問題 -->
+    <Nullable>enable</Nullable>
+    <!--
+      抑制警告 SKEXP0110：
+      Semantic Kernel 的 Agent Orchestration 功能目前仍為實驗性（Preview）API，
+      編譯器會產生此警告提醒開發者 API 可能在未來版本變更。
+      加入 NoWarn 以避免編譯時出現大量警告訊息。
+    -->
+    <NoWarn>$(NoWarn);SKEXP0110</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Semantic Kernel 核心套件：提供 Kernel、Plugin、AI 模型整合等基礎功能 -->
+    <PackageReference Include="Microsoft.SemanticKernel" Version="1.70.0" />
+
+    <!-- Agent Core：提供 ChatCompletionAgent 等 Agent 基礎類別 -->
+    <PackageReference Include="Microsoft.SemanticKernel.Agents.Core" Version="1.70.0" />
+
+    <!--
+      Agent Orchestration（Preview）：提供多種 Agent 協作模式
+      - ConcurrentOrchestration（並行）：本專案使用，多 Agent 同時處理相同輸入
+      - SequentialOrchestration（循序）：Agent 依序執行
+      - HandoffOrchestration（交接）：Agent 之間動態轉交任務
+      - GroupChatOrchestration（群聊）：Agent 互相對話討論
+    -->
+    <PackageReference Include="Microsoft.SemanticKernel.Agents.Orchestration" Version="1.70.0-preview" />
+
+    <!-- Agent Runtime Core：Agent 執行環境的抽象介面與基礎實作 -->
+    <PackageReference Include="Microsoft.SemanticKernel.Agents.Runtime.Core" Version="1.70.0-preview" />
+
+    <!--
+      InProcess Runtime：本地端 Agent 執行環境
+      所有 Agent 在同一個程序內執行，適合開發測試階段使用。
+      正式環境可替換為分散式 Runtime 以支援跨服務、跨機器的 Agent 執行。
+    -->
+    <PackageReference Include="Microsoft.SemanticKernel.Agents.Runtime.InProcess" Version="1.70.0-preview" />
+  </ItemGroup>
+
+</Project>
