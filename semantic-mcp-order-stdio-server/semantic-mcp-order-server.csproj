@@ -1,0 +1,73 @@
+<!--
+  ============================================================================
+  semantic-mcp-order-server — MCP Order Server 專案設定檔
+  ============================================================================
+
+  【專案用途】
+  本專案是一個 MCP（Model Context Protocol）Server，
+  透過 Stdio 傳輸模式對外暴露「訂單查詢工具」，
+  供 AI Agent（如 semantic-mcp-server-console-client）透過 MCP 協定呼叫。
+
+  【外部 Client 如何連線？】
+  外部 Console Client 使用 StdioClientTransport，
+  以子程序方式啟動本 Server（指定 project 參數執行 dotnet run），
+  接著透過 MCP 協定（JSON-RPC over Stdio）與本 Server 溝通，
+  完全不需要直接參考本專案的 .dll 或 Namespace。
+
+  ============================================================================
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- 輸出類型為可執行檔（Console Application） -->
+    <OutputType>Exe</OutputType>
+
+    <!-- 目標框架 -->
+    <TargetFramework>net10.0</TargetFramework>
+
+    <!--
+      *** Namespace 根命名空間設定 ***
+      RootNamespace 定義整個專案的 Namespace 前綴。
+      專案內各資料夾的 Namespace 慣例如下：
+
+        資料夾                   Namespace
+        ─────────────────────────────────────────
+        (專案根目錄)             McpOrderServer
+        model/                   McpOrderServer.Models
+        tools/                   McpOrderServer.Tools
+
+      各 .cs 檔案在檔案頂端以 `namespace McpOrderServer.子層;` 宣告自身所屬的命名空間。
+      跨檔案引用時，需在目標檔加上對應的 `using McpOrderServer.子層;`。
+    -->
+    <RootNamespace>McpOrderServer</RootNamespace>
+
+    <!-- 啟用全域 using（自動引入 System、System.Linq 等常用命名空間） -->
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <!-- 啟用 Nullable 參考型別，在編譯期偵測空值問題 -->
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!--
+      ModelContextProtocol：MCP Server SDK
+      提供 [McpServerToolType]、[McpServerTool]、AddMcpServer()、
+      WithStdioServerTransport()、WithToolsFromAssembly() 等 MCP 核心功能。
+    -->
+    <PackageReference Include="ModelContextProtocol" Version="0.2.0-preview.3" />
+
+    <!--
+      Microsoft.Extensions.Hosting：.NET Generic Host
+      提供 Host.CreateApplicationBuilder()、builder.Build().RunAsync() 等
+      應用程式生命週期管理功能。
+    -->
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.2" />
+
+    <!--
+      Microsoft.Extensions.Logging.Console：Console 日誌輸出
+      讓 Host 可以將執行日誌輸出到終端機，便於開發時除錯。
+    -->
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.2" />
+  </ItemGroup>
+
+</Project>
