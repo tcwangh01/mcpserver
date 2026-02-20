@@ -1,0 +1,10 @@
+我要建立一個簡單的 RESTful API 服務，程式語言使用 Python 與 Flask 框架．
+- 請幫我建立專案與安裝必要套件
+- 專案資料夾為copilot-rest-api
+- 使用Flask 建立一個簡單的 RESTful API，包括以下功能:
+- 一個 GET 路由 ('/'), 返回 “Hello, World!"
+- 一個 POST 路由 ('/data'),接受 JSON 數據並回傳 "Received"
+- 啟動服務 localhost:5000
+- 加入單元測試
+- 執行單元測試
+
